@@ -6,12 +6,10 @@ import 'package:test_store_app/application/pages/auth/password_reset_page.dart';
 import 'package:test_store_app/application/pages/auth/sign_in_page.dart';
 import 'package:test_store_app/application/pages/auth/sign_up_page.dart';
 import 'package:test_store_app/application/pages/cart_page.dart';
-import 'package:test_store_app/application/pages/categories_page.dart';
+import 'package:test_store_app/application/pages/list_categories_page.dart';
 import 'package:test_store_app/application/pages/main_screen_page.dart';
-import 'package:test_store_app/application/pages/product_info_page.dart';
-import 'package:test_store_app/application/pages/products_page.dart';
+import 'package:test_store_app/application/pages/post_publication_page.dart';
 import 'package:test_store_app/application/pages/profile_page.dart';
-import 'package:test_store_app/domain/models/product.dart';
 
 part 'auto_router.gr.dart';
 
@@ -57,21 +55,24 @@ part 'auto_router.gr.dart';
         ),
         AutoRoute(
           page: EmptyRouterPage,
+          name: 'Post',
+          path: 'post',
+          children: [
+            AutoRoute(
+              page: PostPublPage,
+              path: '',
+            )
+          ],
+        ),
+        AutoRoute(
+          page: EmptyRouterPage,
           name: 'Categories',
           path: 'categories',
           children: [
             AutoRoute(
-              page: CategoriesPage,
+              page: ListCategoriesPage,
               path: '',
-            ),
-            AutoRoute(
-              page: ProductsPage,
-              path: ':category',
-            ),
-            AutoRoute(
-              page: ProductInfoPage,
-              path: ':product',
-            ),
+            )
           ],
         ),
       ],

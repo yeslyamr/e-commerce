@@ -12,6 +12,7 @@ class MainScreenPage extends StatelessWidget {
       child: AutoTabsScaffold(
           routes: const [
             Categories(),
+            Post(),
             Cart(),
           ],
           appBarBuilder: (_, tabsRouter) {
@@ -57,6 +58,10 @@ class MainScreenPage extends StatelessWidget {
                   BottomNavigationBarItem(
                     icon: Icon(Icons.storefront),
                     label: ('Categories'),
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.add),
+                    label: ('Post'),
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(Icons.shopping_cart_outlined),

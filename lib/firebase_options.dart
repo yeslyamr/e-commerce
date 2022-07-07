@@ -69,7 +69,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1091406186943',
     projectId: 'test-store-app-4f7dd',
     storageBucket: 'test-store-app-4f7dd.appspot.com',
-    iosClientId: '1091406186943-j3srbj3pf04hkiott57jg36n739qaoek.apps.googleusercontent.com',
+    iosClientId:
+        '1091406186943-j3srbj3pf04hkiott57jg36n739qaoek.apps.googleusercontent.com',
     iosBundleId: 'com.example.testStoreApp',
   );
 }

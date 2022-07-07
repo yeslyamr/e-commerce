@@ -274,7 +274,8 @@ class _NavigateToSignInPageButton extends StatelessWidget {
                 text: 'Sign In',
                 style: const TextStyle(color: Colors.blue),
                 recognizer: TapGestureRecognizer()
-                  ..onTap = () => context.router.pop(const SignInRoute()) //context.goNamed(AppRoutes.signInPage.name),
+                  ..onTap = () => context.router.pop(
+                      const SignInRoute()) //context.goNamed(AppRoutes.signInPage.name),
                 )
           ]),
     );

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:test_store_app/core/Utils.dart';
 
@@ -51,7 +52,10 @@ class FirebaseAuthenticationService implements AuthenticationService {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .set({'cart': [], 'myPublications': []});
       await _firebaseAuth.currentUser?.updateDisplayName(username);
     } on FirebaseAuthException catch (e) {
       Utils.showSnackBar(e.message);

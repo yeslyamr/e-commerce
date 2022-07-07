@@ -49,6 +49,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const EmptyRouterPage());
     },
+    Post.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const EmptyRouterPage());
+    },
     Categories.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const EmptyRouterPage());
@@ -57,21 +61,13 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const CartPage());
     },
-    CategoriesRoute.name: (routeData) {
+    PostPublRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const CategoriesPage());
+          routeData: routeData, child: const PostPublPage());
     },
-    ProductsRoute.name: (routeData) {
-      final args = routeData.argsAs<ProductsRouteArgs>();
+    ListCategoriesRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ProductsPage(key: args.key, category: args.category));
-    },
-    ProductInfoRoute.name: (routeData) {
-      final args = routeData.argsAs<ProductInfoRouteArgs>();
-      return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: ProductInfoPage(key: args.key, product: args.product));
+          routeData: routeData, child: const ListCategoriesPage());
     }
   };
 
@@ -91,16 +87,18 @@ class _$AppRouter extends RootStackRouter {
               children: [
                 RouteConfig(CartRoute.name, path: '', parent: Cart.name)
               ]),
+          RouteConfig(Post.name,
+              path: 'post',
+              parent: MainScreenRoute.name,
+              children: [
+                RouteConfig(PostPublRoute.name, path: '', parent: Post.name)
+              ]),
           RouteConfig(Categories.name,
               path: 'categories',
               parent: MainScreenRoute.name,
               children: [
-                RouteConfig(CategoriesRoute.name,
-                    path: '', parent: Categories.name),
-                RouteConfig(ProductsRoute.name,
-                    path: ':category', parent: Categories.name),
-                RouteConfig(ProductInfoRoute.name,
-                    path: ':product', parent: Categories.name)
+                RouteConfig(ListCategoriesRoute.name,
+                    path: '', parent: Categories.name)
               ])
         ])
       ];
@@ -168,6 +166,15 @@ class Cart extends PageRouteInfo<void> {
 
 /// generated route for
 /// [EmptyRouterPage]
+class Post extends PageRouteInfo<void> {
+  const Post({List<PageRouteInfo>? children})
+      : super(Post.name, path: 'post', initialChildren: children);
+
+  static const String name = 'Post';
+}
+
+/// generated route for
+/// [EmptyRouterPage]
 class Categories extends PageRouteInfo<void> {
   const Categories({List<PageRouteInfo>? children})
       : super(Categories.name, path: 'categories', initialChildren: children);
@@ -184,57 +191,17 @@ class CartRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [CategoriesPage]
-class CategoriesRoute extends PageRouteInfo<void> {
-  const CategoriesRoute() : super(CategoriesRoute.name, path: '');
+/// [PostPublPage]
+class PostPublRoute extends PageRouteInfo<void> {
+  const PostPublRoute() : super(PostPublRoute.name, path: '');
 
-  static const String name = 'CategoriesRoute';
+  static const String name = 'PostPublRoute';
 }
 
 /// generated route for
-/// [ProductsPage]
-class ProductsRoute extends PageRouteInfo<ProductsRouteArgs> {
-  ProductsRoute({Key? key, required String category})
-      : super(ProductsRoute.name,
-            path: ':category',
-            args: ProductsRouteArgs(key: key, category: category));
+/// [ListCategoriesPage]
+class ListCategoriesRoute extends PageRouteInfo<void> {
+  const ListCategoriesRoute() : super(ListCategoriesRoute.name, path: '');
 
-  static const String name = 'ProductsRoute';
-}
-
-class ProductsRouteArgs {
-  const ProductsRouteArgs({this.key, required this.category});
-
-  final Key? key;
-
-  final String category;
-
-  @override
-  String toString() {
-    return 'ProductsRouteArgs{key: $key, category: $category}';
-  }
-}
-
-/// generated route for
-/// [ProductInfoPage]
-class ProductInfoRoute extends PageRouteInfo<ProductInfoRouteArgs> {
-  ProductInfoRoute({Key? key, required Product product})
-      : super(ProductInfoRoute.name,
-            path: ':product',
-            args: ProductInfoRouteArgs(key: key, product: product));
-
-  static const String name = 'ProductInfoRoute';
-}
-
-class ProductInfoRouteArgs {
-  const ProductInfoRouteArgs({this.key, required this.product});
-
-  final Key? key;
-
-  final Product product;
-
-  @override
-  String toString() {
-    return 'ProductInfoRouteArgs{key: $key, product: $product}';
-  }
+  static const String name = 'ListCategoriesRoute';
 }
